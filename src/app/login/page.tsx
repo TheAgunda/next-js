@@ -6,11 +6,11 @@ export default function Login() {
                 <a href="/" className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0" target="_blank" rel="noopener noreferrer">By <img alt="Vercel Logo" width="100" height="24" decoding="async" data-nimg="1" className="dark:invert" src="/vercel.svg" /></a>
             </div>
             <div className="flex flex-col gap-4 mt-[25px]">
-                <input type="text" placeholder="Username" className=" flex w-full justify-center border-b border-gray-300  from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static w-[300px]  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-3 lg:dark:bg-zinc-800/30 outline-0" />
+                <input type="text" placeholder="Username" className=" flex justify-center border-b border-gray-300  from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static w-[300px]  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-3 lg:dark:bg-zinc-800/30 outline-0" />
               
-                <input type="password" placeholder="Password" className=" flex w-full justify-center border-b border-gray-300  from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static w-[300px]  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-3 lg:dark:bg-zinc-800/30 outline-0" />
+                <input type="password" placeholder="Password" className=" flex justify-center border-b border-gray-300  from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static w-[300px]  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-3 lg:dark:bg-zinc-800/30 outline-0" />
             </div>
-            <button className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-black dark:from-inherit lg:static w-[150px]  lg:border bg-black text-white font-bold lg:p-3 rounded lg:dark:bg-black outline-0">
+            <button className=" w-[150px] fixed left-0 top-0 flex justify-center border-b border-gray-300 from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-black dark:from-inherit lg:static w-[150px]  lg:border bg-black text-white font-bold lg:p-3 rounded lg:dark:bg-black outline-0">
                 Login
             </button>
             <p className="mt-3">
