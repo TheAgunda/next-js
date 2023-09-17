@@ -1,7 +1,7 @@
 import mongoose, { Schema, model, models, Types, Document } from 'mongoose';
 import { genSalt, hash, compare } from 'bcrypt';
 
-export interface IUser {
+export interface IUser extends Document {
     name?: string;
     username: string;
     email: string;
@@ -11,12 +11,12 @@ export interface IUser {
     isActivated: boolean;
 }
 
-export interface IUserModel extends IUser, Document {
+export interface IUserModel extends IUser {
     comparePassword(password: string, cb: (error: Error | undefined, isMatch: boolean) => void): any;
     hidePasswordAndAddTokens(accessToken: string, refreshToken: string): IUserModel;
 }
 
-const UserSchema: Schema = new Schema<IUser>(
+const UserSchema = new Schema<IUser, IUserModel>(
     {
         name: { type: String },
         username: {
@@ -40,7 +40,24 @@ const UserSchema: Schema = new Schema<IUser>(
         timestamps: true
     }
 );
-
+UserSchema.pre<IUserModel>('save', function (_next) {
+    const user = this;
+    if (!user.isModified('password')) {
+        return _next();
+    }
+    genSalt(10, (error, salt) => {
+        if (error) {
+            return _next(error);
+        }
+        hash(user.password, salt, (error, passwordHash) => {
+            if (error) {
+                return _next(error);
+            }
+            user.password = passwordHash;
+            return _next();
+        });
+    });
+});
 UserSchema.set('toObject', { virtuals: true });
 UserSchema.set('toJSON', { virtuals: true });
 UserSchema.methods.comparePassword = function (requestPassword: string, cb: (error: Error | undefined, isMatch: boolean) => void): any {
@@ -62,5 +79,5 @@ UserSchema.methods.hidePasswordAndAddTokens = function (accessToken: any, refres
     return user;
 }
 
-const User = models.User || model<IUserModel>("User", UserSchema);
+const User = models.User || model<IUserModel, IUser>("User", UserSchema);
 export default User;
