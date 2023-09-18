@@ -32,7 +32,7 @@ export async function POST(request: Request) {
             message: "Login success.",
             status: true,
         });
-        response.cookies.set("token", token, {
+        response.cookies.set(process.env.JWT_TOKEN_KEY!, token, {
             httpOnly: true,
         });
         return response;
