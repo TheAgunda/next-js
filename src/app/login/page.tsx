@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 export default function Login() {
-    // const router = useRouter();
+    const router = useRouter();
     const [buttonDisabled, setButtonDisabled] = useState(true);
     const initialState = {
         email: "",
@@ -15,17 +16,13 @@ export default function Login() {
         event.preventDefault();
         try {
             const response = await axios.post('api/v1/login', user);
-            console.log(response);
-            // toast.success("Registration successful.")
-            // router.push("/login")
+            toast.success("Login successful.")
+            router.push("/profile");
         } catch (error: any) {
-            // console.log(error);
+            console.log(error);
             toast.error(error.response.data.message)
         } finally {
-
         }
-
-
     }
     useEffect(() => {
         if (user.email.length > 0 && user.password.length > 0) {
