@@ -9,6 +9,10 @@ export interface IUser extends Document {
     isDeleted?: boolean;
     isVerified: boolean;
     isActivated: boolean;
+    verifyToken: string;
+    verifyTokenExpiry: Date;
+    forgotPasswordToken: string;
+    forgotPasswordExpiry: Date;
 }
 
 export interface IUserModel extends IUser {
@@ -35,6 +39,18 @@ const UserSchema = new Schema<IUser, IUserModel>(
         isActivated: {
             type: Boolean, default: false,
         },
+        verifyToken: {
+            type: String,
+        },
+        verifyTokenExpiry: {
+            type: Date,
+        },
+        forgotPasswordToken: {
+            type: String,
+        },
+        forgotPasswordExpiry: {
+            type: Date,
+        }
     },
     {
         timestamps: true

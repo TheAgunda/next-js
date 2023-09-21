@@ -21,6 +21,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.1",
     "next": "13.4.19",
+    "nodemailer": "^6.9.5",
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -29,6 +30,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.3"
+    "@types/jsonwebtoken": "^9.0.3",
+    "@types/nodemailer": "^6.4.10"
   }
 }
