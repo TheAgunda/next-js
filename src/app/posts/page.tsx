@@ -20,7 +20,6 @@ export default function Profile() {
     const geUserDetails = async () => {
         const response = await axios.get('/api/v1/user');
         setData(response?.data?.result);
-        console.log(data);
     }
     useEffect(() => {
         geUserDetails();

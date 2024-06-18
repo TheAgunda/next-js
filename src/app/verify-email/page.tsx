@@ -11,9 +11,10 @@ export default function VerifyEmailPage() {
     const verifyUserEmail = async () => {
         try {
             const response = await axios.post('api/v1/verify-email', { token });
+            console.log(response);
             setVerified(true);
             toast.success("Email verified successfully.")
-            router.push("/login")
+            router.push("/signin")
         } catch (error: any) {
             console.log(error);
             toast.error(error.response.data.message);
